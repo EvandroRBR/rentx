@@ -2,8 +2,8 @@ import { compare } from 'bcrypt';
 import { sign } from 'jsonwebtoken';
 import { injectable, inject } from 'tsyringe';
 
-import { AppError } from '../../../../errors/AppError';
-import { IUsersRepository } from '../../repositories/IUsersRepository';
+import { IUsersRepository } from '@modules/accounts/repositories/IUsersRepository';
+import { AppError } from '@shared/errors/AppError';
 
 interface IRequest {
   email: string;
@@ -32,13 +32,13 @@ class AuthenticateUserUseCase {
       throw new AppError('Incorrect email/password combination.');
     }
 
-    const passwordMatch = await compare(password, user.password);
+    const passwordMatched = await compare(password, user.password);
 
-    if (!passwordMatch) {
+    if (!passwordMatched) {
       throw new AppError('Incorrect email/password combination.');
     }
 
-    const token = sign({}, '4d0b0db850bc47ffa3e07bc35b2ac6fb', {
+    const token = sign({}, '177512cc5e6e64405520b42cb31cefb8', {
       subject: user.id,
       expiresIn: '1d',
     });

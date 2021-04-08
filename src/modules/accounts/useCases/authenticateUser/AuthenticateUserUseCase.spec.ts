@@ -1,6 +1,7 @@
-import { AppError } from '../../../../errors/AppError';
-import { ICreateUserDTO } from '../../dtos/ICreateUserDTO';
-import { UsersRepositoryInMemory } from '../../repositories/in-memory/UsersRepositoryInMemory';
+import { ICreateUserDTO } from '@modules/accounts/dtos/ICreateUserDTO';
+import { UsersRepositoryInMemory } from '@modules/accounts/repositories/in-memory/UsersRepositoryInMemory';
+import { AppError } from '@shared/errors/AppError';
+
 import { CreateUserUseCase } from '../createUser/CreateUserUseCase';
 import { AuthenticateUserUseCase } from './AuthenticateUserUseCase';
 
@@ -21,7 +22,7 @@ describe('Authenticate User', () => {
     const user: ICreateUserDTO = {
       name: 'User Test',
       email: 'user@test.com',
-      password: '1234',
+      password: '123456',
       driver_license: '000123',
     };
 
