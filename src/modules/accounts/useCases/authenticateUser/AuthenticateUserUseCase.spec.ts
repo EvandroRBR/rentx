@@ -36,7 +36,7 @@ describe('Authenticate User', () => {
     expect(result).toHaveProperty('token');
   });
 
-  it('should not be able to authenticate an nonexistent user', async () => {
+  it('should not be able to authenticate an non-existent user', async () => {
     expect(async () => {
       await authenticateUserUseCase.execute({
         email: 'false@test.com',
